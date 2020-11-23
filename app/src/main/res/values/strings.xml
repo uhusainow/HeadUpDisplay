@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="add">+</string>
+    <string-array name="options">
+        <item>(Keine Auswahl)</item>
+        <item>Geschwindigkeit (not available yet)</item>
+        <item>Reifendruck (not available yet)</item>
+        <item>Ladestand (not available yet)</item>
+        <item>Leistung (not available yet)</item>
+        <item>Durchschnittlichen Verbrauch (not available yet)</item>
+        <item>Navigation (not available yet)</item>
+    </string-array>
+</resources>
