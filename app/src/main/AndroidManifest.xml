@@ -13,6 +13,11 @@
             android:supportsRtl="true"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
         <activity
+                android:name=".MirrorActivity"
+                android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+                android:screenOrientation="landscape">
+        </activity>
+        <activity
                 android:name=".OptionsActivity"
                 android:screenOrientation="landscape">
         </activity>

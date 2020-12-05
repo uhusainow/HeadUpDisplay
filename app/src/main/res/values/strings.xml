@@ -10,4 +10,6 @@
         <item>Durchschnittlichen Verbrauch (not available yet)</item>
         <item>Navigation (not available yet)</item>
     </string-array>
+
+    <string name="file_key">data</string>
 </resources>

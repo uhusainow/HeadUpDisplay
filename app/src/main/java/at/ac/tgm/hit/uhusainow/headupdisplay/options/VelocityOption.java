@@ -6,66 +6,51 @@ import android.view.View;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
+import at.ac.tgm.hit.uhusainow.headupdisplay.MainActivity;
 import at.ac.tgm.hit.uhusainow.headupdisplay.R;
-import io.github.macfja.obd2.Commander;
-import io.github.macfja.obd2.command.livedata.VehicleSpeed;
-import io.github.macfja.obd2.exception.ExceptionResponse;
+import at.ac.tgm.hit.uhusainow.headupdisplay.UIUpdater;
+import com.github.pires.obd.commands.SpeedCommand;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
+
 
 /**
  * Class to create content for velocity
  */
 public class VelocityOption extends Option{
 
-    private Commander commander;
+    private BluetoothSocket bluetoothSocket;
 
     /**
      * Initializing all attributes
      * @param activity
      */
-    public VelocityOption(/*BluetoothSocket bs,*/ Activity activity){
+    public VelocityOption(BluetoothSocket bluetoothSocket, Activity activity){
 
-        //this.commander = new Commander();
         super(activity);
-
-        /*try {
-            this.commander.setCommunicationInterface(bs.getOutputStream(), bs.getInputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
+        this.bluetoothSocket = bluetoothSocket;
 
     }
 
     @Override
     public void createContent(int zoneId, int zoneTextId, int zoneContentId, int option) {
 
-        //Get ConstraintLayout
-        ConstraintLayout constraintLayout = super.getActivity().findViewById(R.id.constraintLayout);
-
-        //Remove current content in zone
-        if (super.getActivity().findViewById(zoneContentId) != null) constraintLayout.removeView(super.getActivity().findViewById(zoneContentId));
-
-        //Check if no option selected
+        super.removeCurrentContent(zoneContentId);
 
         //Create specific elements
-        TextView tv = (TextView) super.getActivity().findViewById(zoneTextId);
-        if (tv.getVisibility() != View.GONE) tv.setVisibility(View.GONE);
+        if (super.getActivity() instanceof MainActivity) {
+            TextView tv = (TextView) super.getActivity().findViewById(zoneTextId);
+            if (tv.getVisibility() != View.GONE) tv.setVisibility(View.GONE);
+        }
 
         //Edit attributes of content
         TextView test = new TextView(super.getActivity());
-        /*try {
-            test.setText(this.commander.sendCommand(new VehicleSpeed()) + "");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ExceptionResponse exceptionResponse) {
-            exceptionResponse.printStackTrace();
-        }*/
-        test.setText("Test erfolgreich" + Math.random());
         test.setId(zoneContentId);
         test.setTextSize(36);
 
         //Add content to layout
+        ConstraintLayout constraintLayout = super.getActivity().findViewById(R.id.constraintLayout);
         constraintLayout.addView(test);
 
         ConstraintSet constraintSet = new ConstraintSet();
@@ -75,6 +60,35 @@ public class VelocityOption extends Option{
         constraintSet.connect(zoneContentId,ConstraintSet.LEFT,zoneId,ConstraintSet.LEFT,0);
         constraintSet.connect(zoneContentId,ConstraintSet.BOTTOM,zoneId,ConstraintSet.BOTTOM,0);
         constraintSet.applyTo(constraintLayout);
+
+        //Update Content
+        final int tmpZoneContentId = zoneContentId;
+        super.setUpdater(new UIUpdater(new Runnable() {
+            @Override
+            public void run() {
+                setSpeed(tmpZoneContentId);
+            }
+        }));
+        super.getUpdater().startUpdates();
+
+    }
+
+    public void setSpeed(int zoneContentId) {
+
+        /*SpeedCommand speed = new SpeedCommand();
+        speed.useImperialUnits(false);
+
+        try {
+            speed.run(bluetoothSocket.getInputStream(),bluetoothSocket.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
+
+        TextView content = super.getActivity().findViewById(zoneContentId);
+        //content.setText(speed.getFormattedResult());
+        content.setText("Test" + Math.random());
 
     }
 
