@@ -1,21 +1,12 @@
 package at.ac.tgm.hit.uhusainow.headupdisplay;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothSocket;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import at.ac.tgm.hit.uhusainow.headupdisplay.bluetooth.BluetoothConnection;
-import at.ac.tgm.hit.uhusainow.headupdisplay.bluetooth.BluetoothDeviceNotSupported;
-import at.ac.tgm.hit.uhusainow.headupdisplay.bluetooth.BluetoothNotEnabled;
 import at.ac.tgm.hit.uhusainow.headupdisplay.listener.DoubleClickListener;
-
-import java.io.IOException;
 
 public class MirrorActivity extends Activity {
 

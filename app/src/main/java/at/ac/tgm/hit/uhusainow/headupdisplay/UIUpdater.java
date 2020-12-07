@@ -40,12 +40,12 @@ public class UIUpdater {
      * The same as the default constructor, but specifying the
      * intended update interval.
      *
-     * @param uiUpdater A runnable containing the update routine.
+     * @param UiUpdater A runnable containing the update routine.
      * @param interval  The interval over which the routine
      *                  should run (milliseconds).
      */
-    public UIUpdater(Runnable uiUpdater, int interval){
-        this(uiUpdater);
+    public UIUpdater(Runnable UiUpdater, int interval){
+        this(UiUpdater);
         UPDATE_INTERVAL = interval;
     }
 

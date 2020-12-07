@@ -2,56 +2,37 @@ package at.ac.tgm.hit.uhusainow.headupdisplay.options;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothSocket;
-import android.view.View;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
-import at.ac.tgm.hit.uhusainow.headupdisplay.MainActivity;
 import at.ac.tgm.hit.uhusainow.headupdisplay.R;
 import at.ac.tgm.hit.uhusainow.headupdisplay.UIUpdater;
-import com.github.pires.obd.commands.SpeedCommand;
-import org.w3c.dom.Text;
 
-import java.io.IOException;
+public class VelocityOption extends Option {
 
+    public static final int VELOCITY_ZONE_CONTENT_ID = 69420;
 
-/**
- * Class to create content for velocity
- */
-public class VelocityOption extends Option{
+    public VelocityOption(Activity activity, BluetoothSocket bluetoothSocket){
 
-    private BluetoothSocket bluetoothSocket;
-
-    /**
-     * Initializing all attributes
-     * @param activity
-     */
-    public VelocityOption(BluetoothSocket bluetoothSocket, Activity activity){
-
-        super(activity);
-        this.bluetoothSocket = bluetoothSocket;
+        super(activity, bluetoothSocket);
 
     }
 
     @Override
-    public void createContent(int zoneId, int zoneTextId, int zoneContentId, int option) {
+    public void createContent(int zoneId, int zoneContentId, int option) {
 
+        //Remove current content
         super.removeCurrentContent(zoneContentId);
 
-        //Create specific elements
-        if (super.getActivity() instanceof MainActivity) {
-            TextView tv = (TextView) super.getActivity().findViewById(zoneTextId);
-            if (tv.getVisibility() != View.GONE) tv.setVisibility(View.GONE);
-        }
-
         //Edit attributes of content
-        TextView test = new TextView(super.getActivity());
-        test.setId(zoneContentId);
-        test.setTextSize(36);
+        TextView content = new TextView(super.getActivity());
+        content.setId(zoneContentId);
+        content.setTextSize(36);
+        content.setText("test");
 
         //Add content to layout
         ConstraintLayout constraintLayout = super.getActivity().findViewById(R.id.constraintLayout);
-        constraintLayout.addView(test);
+        constraintLayout.addView(content);
 
         ConstraintSet constraintSet = new ConstraintSet();
         constraintSet.clone(constraintLayout);
@@ -62,33 +43,42 @@ public class VelocityOption extends Option{
         constraintSet.applyTo(constraintLayout);
 
         //Update Content
-        final int tmpZoneContentId = zoneContentId;
-        super.setUpdater(new UIUpdater(new Runnable() {
-            @Override
-            public void run() {
-                setSpeed(tmpZoneContentId);
-            }
-        }));
-        super.getUpdater().startUpdates();
+        updateContent(zoneContentId);
 
     }
 
-    public void setSpeed(int zoneContentId) {
-
+    @Override
+    public void updateContent(int zoneContentId) {
         /*SpeedCommand speed = new SpeedCommand();
         speed.useImperialUnits(false);
 
         try {
-            speed.run(bluetoothSocket.getInputStream(),bluetoothSocket.getOutputStream());
+            speed.run(super.getBluetoothSocket().getInputStream(), super.getBluetoothSocket().getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }*/
 
-        TextView content = super.getActivity().findViewById(zoneContentId);
+        //final TextView content = super.getActivity().findViewById(zoneContentId);
         //content.setText(speed.getFormattedResult());
-        content.setText("Test" + Math.random());
+        //content.setText("Test" + Math.random());
+
+        final int tmpZoneContentId = zoneContentId;
+        super.setUpdater(new UIUpdater(new Runnable() {
+            @Override
+            public void run() {
+                TextView test = (TextView) getActivity().findViewById(tmpZoneContentId);
+                if (test.getText().toString().equals(DefaultOption.OPTION_DEFAULT_TEXT)) {
+                    stopUpdater();
+                } else {
+                    test.setText("Test" + Math.random());
+                }
+
+            }
+        }));
+
+        super.getUpdater().startUpdates();
 
     }
 

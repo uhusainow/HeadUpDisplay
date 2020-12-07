@@ -16,7 +16,6 @@ import at.ac.tgm.hit.uhusainow.headupdisplay.listener.DoubleClickListener;
 
 import java.io.IOException;
 
-
 public class MainActivity extends Activity {
 
     @Override

@@ -5,10 +5,11 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Set;
 import java.util.UUID;
 
-public class BluetoothConnection {
+public class BluetoothConnection implements Serializable {
     public static final String BLEUTOOTH_DEVICE = "KENNWEI";
 
     private BluetoothAdapter bluetoothAdapter;

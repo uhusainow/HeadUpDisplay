@@ -1,44 +1,28 @@
 package at.ac.tgm.hit.uhusainow.headupdisplay;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
+import at.ac.tgm.hit.uhusainow.headupdisplay.options.DefaultOption;
 import at.ac.tgm.hit.uhusainow.headupdisplay.options.Option;
 import at.ac.tgm.hit.uhusainow.headupdisplay.options.VelocityOption;
 import at.ac.tgm.hit.uhusainow.headupdisplay.bluetooth.*;
-
-import java.io.IOException;
 
 public class ZoneHandler {
 
     private static BluetoothConnection bluetoothConnection;
 
-    private static Option oldOption;
-
     public static void setZone(Activity activity, int zone, int option) {
 
         BluetoothSocket bluetoothSocket = bluetoothConnection.getBluetoothSocket();
 
-        /**
-         * *****************************************************************************************************
-         * *****************************************************************************************************
-         * **************************************** Needs to be Changed ****************************************
-         * ************************************* alternative for usedOption ************************************
-         * *****************************************************************************************************
-         * *****************************************************************************************************
-         */
-        Option usedOption = new Option(activity);
-        boolean test = true;
+        Option usedOption = new DefaultOption(activity);
 
         switch (option){
 
             case 1:
-                usedOption = new VelocityOption(bluetoothSocket, activity);
-                test = false;
+                usedOption = new VelocityOption(activity, bluetoothSocket);
                 break;
 
             case 2:
@@ -60,18 +44,15 @@ public class ZoneHandler {
 
         switch (zone) {
             case 1:
-                usedOption.createContent(R.id.zoneOne, R.id.zoneOneText, 69420, option);
+                usedOption.createContent(R.id.zoneOne, 69420, option);
                 break;
             case 2:
-                usedOption.createContent(R.id.zoneTwo, R.id.zoneTwoText, 69421, option);
+                usedOption.createContent(R.id.zoneTwo, 69421, option);
                 break;
             case 3:
-                usedOption.createContent(R.id.zoneThree, R.id.zoneThreeText, 69422, option);
+                usedOption.createContent(R.id.zoneThree, 69422, option);
                 break;
         }
-
-        if(test && oldOption != null && oldOption.getUpdater() != null) oldOption.getUpdater().stopUpdates();
-        oldOption = usedOption;
 
         saveZone(activity, zone, option);
 

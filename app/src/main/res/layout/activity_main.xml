@@ -27,27 +27,6 @@
                                                 android:orientation="vertical"
                                                 app:layout_constraintGuide_percent="0.5"/>
     <TextView
-            android:text="@string/add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/zoneOneText"
-            app:layout_constraintStart_toStartOf="@+id/zoneOne" app:layout_constraintEnd_toEndOf="@+id/zoneOne"
-            app:layout_constraintTop_toTopOf="@+id/zoneOne" app:layout_constraintBottom_toBottomOf="@+id/zoneOne"
-            android:textSize="36sp"/>
-    <TextView
-            android:text="@string/add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/zoneTwoText"
-            app:layout_constraintTop_toTopOf="@+id/zoneTwo"
-            app:layout_constraintBottom_toBottomOf="@+id/zoneTwo" app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="parent" android:textSize="30sp"/>
-    <TextView
-            android:text="@string/add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/zoneThreeText"
-            app:layout_constraintTop_toTopOf="@+id/zoneThree"
-            app:layout_constraintBottom_toBottomOf="@+id/zoneThree" app:layout_constraintStart_toEndOf="@+id/zoneTwo"
-            app:layout_constraintEnd_toEndOf="parent" android:textSize="30sp"/>
-    <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/notification"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
