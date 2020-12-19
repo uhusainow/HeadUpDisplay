@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 import at.ac.tgm.hit.uhusainow.headupdisplay.options.DefaultOption;
 import at.ac.tgm.hit.uhusainow.headupdisplay.options.Option;
 import at.ac.tgm.hit.uhusainow.headupdisplay.options.VelocityOption;
@@ -14,6 +15,17 @@ public class ZoneHandler {
     private static BluetoothConnection bluetoothConnection;
 
     public static void setZone(Activity activity, int zone, int option) {
+
+        /*SharedPreferences sharedPref = activity.getSharedPreferences(activity.getString(R.string.file_key), Context.MODE_PRIVATE);
+        int zoneOne = sharedPref.getInt("1", 0);
+        int zoneTwo = sharedPref.getInt("2", 0);
+        int zoneThree = sharedPref.getInt("3", 0);
+        if (zone != 0) {
+            if (zoneOne == zone || zoneTwo == zone || zoneThree == zone) {
+                Toast.makeText(activity, "Modul bereits in Verwendung!", Toast.LENGTH_LONG).show();
+                return;
+            }
+        }*/
 
         BluetoothSocket bluetoothSocket = bluetoothConnection.getBluetoothSocket();
 

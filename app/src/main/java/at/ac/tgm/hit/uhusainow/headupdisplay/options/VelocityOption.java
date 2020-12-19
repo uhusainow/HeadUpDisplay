@@ -8,9 +8,12 @@ import androidx.constraintlayout.widget.ConstraintSet;
 import at.ac.tgm.hit.uhusainow.headupdisplay.R;
 import at.ac.tgm.hit.uhusainow.headupdisplay.UIUpdater;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class VelocityOption extends Option {
 
-    public static final int VELOCITY_ZONE_CONTENT_ID = 69420;
+    public static final int VELOCITY_UPDATE_TIME = 2000;
 
     public VelocityOption(Activity activity, BluetoothSocket bluetoothSocket){
 
@@ -28,7 +31,6 @@ public class VelocityOption extends Option {
         TextView content = new TextView(super.getActivity());
         content.setId(zoneContentId);
         content.setTextSize(36);
-        content.setText("test");
 
         //Add content to layout
         ConstraintLayout constraintLayout = super.getActivity().findViewById(R.id.constraintLayout);
@@ -43,7 +45,20 @@ public class VelocityOption extends Option {
         constraintSet.applyTo(constraintLayout);
 
         //Update Content
-        updateContent(zoneContentId);
+        super.setUpdater(new Timer());
+        final int tmpZoneContentId = zoneContentId;
+        super.getUpdater().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                TextView content = (TextView) getActivity().findViewById(tmpZoneContentId);
+                if (content.getText().toString().equals(DefaultOption.OPTION_DEFAULT_TEXT)) {
+                    stopUpdater();
+                } else {
+                    updateContent(tmpZoneContentId);
+                }
+                System.out.println("grrbahhh");
+            }
+        }, VelocityOption.VELOCITY_UPDATE_TIME, VelocityOption.VELOCITY_UPDATE_TIME);
 
     }
 
@@ -62,23 +77,15 @@ public class VelocityOption extends Option {
 
         //final TextView content = super.getActivity().findViewById(zoneContentId);
         //content.setText(speed.getFormattedResult());
-        //content.setText("Test" + Math.random());
 
         final int tmpZoneContentId = zoneContentId;
-        super.setUpdater(new UIUpdater(new Runnable() {
+        super.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 TextView test = (TextView) getActivity().findViewById(tmpZoneContentId);
-                if (test.getText().toString().equals(DefaultOption.OPTION_DEFAULT_TEXT)) {
-                    stopUpdater();
-                } else {
-                    test.setText("Test" + Math.random());
-                }
-
+                test.setText("Test" + Math.random());
             }
-        }));
-
-        super.getUpdater().startUpdates();
+        });
 
     }
 

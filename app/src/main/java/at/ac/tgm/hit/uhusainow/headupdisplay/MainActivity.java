@@ -62,7 +62,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        /*SharedPreferences.Editor editor = sp.edit();
+        /*SharedPreferences.Editor editor = sharedPref.edit();
         editor.clear();
         editor.apply();*/
 

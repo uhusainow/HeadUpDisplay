@@ -7,11 +7,13 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import at.ac.tgm.hit.uhusainow.headupdisplay.R;
 import at.ac.tgm.hit.uhusainow.headupdisplay.UIUpdater;
 
+import java.util.Timer;
+
 public abstract class Option {
 
     private Activity activity;
     private BluetoothSocket bluetoothSocket;
-    private UIUpdater updater;
+    private Timer updater;
 
     public Option(Activity activity, BluetoothSocket bluetoothSocket) {
         this.activity = activity;
@@ -40,9 +42,9 @@ public abstract class Option {
 
     public BluetoothSocket getBluetoothSocket() { return this.bluetoothSocket; }
 
-    public void setUpdater(UIUpdater updater) { this.updater = updater; }
+    public void setUpdater(Timer updater) { this.updater = updater; }
 
-    public UIUpdater getUpdater() { return this.updater; }
+    public Timer getUpdater() { return this.updater; }
 
     /**
      * Doesnt work
@@ -51,7 +53,7 @@ public abstract class Option {
     public void stopUpdater() {
         //this.getUpdater().stopUpdates();
         System.out.println("stop");
-        this.updater = null;
+        this.updater.cancel();
     }
 
 }

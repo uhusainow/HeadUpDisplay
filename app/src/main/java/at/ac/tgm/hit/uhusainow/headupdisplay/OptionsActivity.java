@@ -51,7 +51,7 @@ public class OptionsActivity extends Activity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), "position " + position + "\nid " + id + "\nzoneNumber " + finalZoneNumber, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "position " + position + "\nid " + id + "\nzoneNumber " + finalZoneNumber, Toast.LENGTH_SHORT).show();
                 sendSelection(position, finalZoneNumber);
         }});
 
