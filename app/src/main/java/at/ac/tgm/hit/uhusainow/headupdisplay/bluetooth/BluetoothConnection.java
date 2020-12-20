@@ -30,7 +30,9 @@ public class BluetoothConnection implements Serializable {
 
                 for(BluetoothDevice bondedDevice: devices) {
                     //System.out.println("DEVICE: " + bondedDevice.getName());
-                    if(bondedDevice.getName().equals(BluetoothConnection.BLEUTOOTH_DEVICE)){
+                    if(bondedDevice.getName().equals(BluetoothConnection.BLEUTOOTH_DEVICE) ||
+                            bondedDevice.getName().equals("CAN OBDII") ||
+                            bondedDevice.getName().equals("CBT")){
                         this.bluetoothSocket = bondedDevice.createRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));
                         this.bluetoothSocket.connect();
                         break;
