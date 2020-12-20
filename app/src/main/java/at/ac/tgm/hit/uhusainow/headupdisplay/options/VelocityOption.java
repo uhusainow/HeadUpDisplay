@@ -7,7 +7,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import at.ac.tgm.hit.uhusainow.headupdisplay.R;
 import at.ac.tgm.hit.uhusainow.headupdisplay.UIUpdater;
+import com.github.pires.obd.commands.SpeedCommand;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -64,7 +66,8 @@ public class VelocityOption extends Option {
 
     @Override
     public void updateContent(int zoneContentId) {
-        /*SpeedCommand speed = new SpeedCommand();
+
+        SpeedCommand speed = new SpeedCommand();
         speed.useImperialUnits(false);
 
         try {
@@ -73,17 +76,19 @@ public class VelocityOption extends Option {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
+        }
 
-        //final TextView content = super.getActivity().findViewById(zoneContentId);
-        //content.setText(speed.getFormattedResult());
+        final TextView content = super.getActivity().findViewById(zoneContentId);
+        content.setText(speed.getFormattedResult());
+        final SpeedCommand speedTmp = speed;
 
         final int tmpZoneContentId = zoneContentId;
         super.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 TextView test = (TextView) getActivity().findViewById(tmpZoneContentId);
-                test.setText("Test" + Math.random());
+                test.setText(speedTmp.getFormattedResult());
+                //test.setText("Test" + Math.random());
             }
         });
 
