@@ -15,7 +15,7 @@ import java.util.TimerTask;
 
 public class VelocityOption extends Option {
 
-    public static final int VELOCITY_UPDATE_TIME = 2000;
+    public static final int VELOCITY_UPDATE_TIME = 500;
 
     public VelocityOption(Activity activity, BluetoothSocket bluetoothSocket){
 
