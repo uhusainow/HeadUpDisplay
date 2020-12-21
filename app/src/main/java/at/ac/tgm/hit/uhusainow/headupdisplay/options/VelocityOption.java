@@ -32,7 +32,7 @@ public class VelocityOption extends Option {
         //Edit attributes of content
         TextView content = new TextView(super.getActivity());
         content.setId(zoneContentId);
-        content.setTextSize(36);
+        content.setTextSize(46);
 
         //Add content to layout
         ConstraintLayout constraintLayout = super.getActivity().findViewById(R.id.constraintLayout);
@@ -47,18 +47,21 @@ public class VelocityOption extends Option {
         constraintSet.applyTo(constraintLayout);
 
         //Update Content
-        super.setUpdater(new Timer());
         final int tmpZoneContentId = zoneContentId;
+        super.setUpdater(new Timer());
         super.getUpdater().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
+
                 TextView content = (TextView) getActivity().findViewById(tmpZoneContentId);
+
+                //Doesnt Work, needs to be fixed
                 if (content.getText().toString().equals(DefaultOption.OPTION_DEFAULT_TEXT)) {
                     stopUpdater();
                 } else {
                     updateContent(tmpZoneContentId);
                 }
-                System.out.println("grrbahhh");
+
             }
         }, VelocityOption.VELOCITY_UPDATE_TIME, VelocityOption.VELOCITY_UPDATE_TIME);
 
@@ -78,17 +81,15 @@ public class VelocityOption extends Option {
             e.printStackTrace();
         }
 
-        //final TextView content = super.getActivity().findViewById(zoneContentId);
-        //content.setText(speed.getFormattedResult());
-        final String kmh = speed.getFormattedResult();
-
         final int tmpZoneContentId = zoneContentId;
+        final String kmh = speed.getFormattedResult();
         super.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                TextView test = (TextView) getActivity().findViewById(tmpZoneContentId);
-                test.setText(kmh);
-                //test.setText("Test" + Math.random());
+
+                TextView content = (TextView) getActivity().findViewById(tmpZoneContentId);
+                content.setText(kmh);
+
             }
         });
 
