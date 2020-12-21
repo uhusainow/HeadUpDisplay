@@ -49,6 +49,10 @@ public class MainActivity extends Activity {
         int zoneTwo = sharedPref.getInt("2", 0);
         int zoneThree = sharedPref.getInt("3", 0);
 
+        /*SharedPreferences.Editor editor = sharedPref.edit();
+        editor.clear();
+        editor.apply();*/
+
         ZoneHandler.setZone(this,1, zoneOne);
         ZoneHandler.setZone(this,2, zoneTwo);
         ZoneHandler.setZone(this,3, zoneThree);
@@ -61,10 +65,6 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
-
-        /*SharedPreferences.Editor editor = sharedPref.edit();
-        editor.clear();
-        editor.apply();*/
 
     }
 

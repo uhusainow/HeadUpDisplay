@@ -28,6 +28,10 @@ public class ZoneHandler {
         }*/
 
         BluetoothSocket bluetoothSocket = bluetoothConnection.getBluetoothSocket();
+        if(bluetoothSocket == null){
+            System.out.println("Fehler 69420");
+            return;
+        }
 
         Option usedOption = new DefaultOption(activity);
 
