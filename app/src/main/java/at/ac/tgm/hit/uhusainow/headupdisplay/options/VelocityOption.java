@@ -78,8 +78,8 @@ public class VelocityOption extends Option {
             e.printStackTrace();
         }
 
-        final TextView content = super.getActivity().findViewById(zoneContentId);
-        content.setText(speed.getFormattedResult());
+        //final TextView content = super.getActivity().findViewById(zoneContentId);
+        //content.setText(speed.getFormattedResult());
         final String kmh = speed.getFormattedResult();
 
         final int tmpZoneContentId = zoneContentId;
