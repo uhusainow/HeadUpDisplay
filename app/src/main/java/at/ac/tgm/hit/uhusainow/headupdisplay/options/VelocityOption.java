@@ -80,14 +80,14 @@ public class VelocityOption extends Option {
 
         final TextView content = super.getActivity().findViewById(zoneContentId);
         content.setText(speed.getFormattedResult());
-        final SpeedCommand speedTmp = speed;
+        final String kmh = speed.getFormattedResult();
 
         final int tmpZoneContentId = zoneContentId;
         super.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 TextView test = (TextView) getActivity().findViewById(tmpZoneContentId);
-                test.setText(speedTmp.getFormattedResult());
+                test.setText(kmh);
                 //test.setText("Test" + Math.random());
             }
         });
