@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class BluetoothConnection implements Serializable {
 
-    public static final ArrayList<String> BLUETOOTH_DEVICES = new ArrayList<>(Arrays.asList("CBT", "KONNWEI", "CAN OBDII", "OBDII"));
+    public static final ArrayList<String> BLUETOOTH_DEVICES = new ArrayList<>(Arrays.asList("CBT", "KONNWEI", "CAN OBDII", "OBDII", "Airpods von Predator680"));
 
     private BluetoothAdapter bluetoothAdapter;
     private BluetoothSocket bluetoothSocket;
@@ -36,7 +36,7 @@ public class BluetoothConnection implements Serializable {
 
                 for(BluetoothDevice bondedDevice: devices) {
 
-                    Log.d("BluetoothConnection", "Starting Bluetooth connection..");
+                    Log.d("BluetoothConnection", "Starting Bluetooth connection.." + bondedDevice.getName());
                     if(BluetoothConnection.BLUETOOTH_DEVICES.contains(bondedDevice.getName())) {
 
                         System.out.println("State: " + bondedDevice.getBondState());
