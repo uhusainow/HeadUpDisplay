@@ -58,7 +58,7 @@ public class BluetoothConnection implements Serializable {
                                 BluetoothSocket sockFallback = (BluetoothSocket) m.invoke(this.bluetoothSocket.getRemoteDevice(), params);
                                 sockFallback.connect();
                                 this.bluetoothSocket = sockFallback;
-                                Log.i("Socket-Info", this.bluetoothSocket.getRemoteDevice().getName() + " : " + this.bluetoothSocket.isConnected());
+                                //Log.i("Socket-Info", this.bluetoothSocket.getRemoteDevice().getName() + " : " + this.bluetoothSocket.isConnected());
 
                             } catch (Exception e2) {
 
