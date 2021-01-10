@@ -5,9 +5,7 @@ import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
-import at.ac.tgm.hit.uhusainow.headupdisplay.options.DefaultOption;
-import at.ac.tgm.hit.uhusainow.headupdisplay.options.Option;
-import at.ac.tgm.hit.uhusainow.headupdisplay.options.VelocityOption;
+import at.ac.tgm.hit.uhusainow.headupdisplay.options.*;
 import at.ac.tgm.hit.uhusainow.headupdisplay.bluetooth.*;
 
 public class ZoneHandler {
@@ -42,18 +40,19 @@ public class ZoneHandler {
                 break;
 
             case 2:
+                usedOption = new FuelOption(activity, bluetoothSocket);
                 break;
 
             case 3:
+                usedOption = new RPMOption(activity, bluetoothSocket);
                 break;
 
             case 4:
+                usedOption = new ThrottlePositionOption(activity, bluetoothSocket);
                 break;
 
             case 5:
-                break;
-
-            case 6:
+                usedOption = new AmbientTempOption(activity, bluetoothSocket);
                 break;
 
         }
