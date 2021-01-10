@@ -24,9 +24,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        BluetoothConnection bluetoothConnection = null;
         try {
-            BluetoothConnection bluetoothConnection = new BluetoothConnection(BluetoothAdapter.getDefaultAdapter());
-            ZoneHandler.setBluetoothConnection(bluetoothConnection);
+            bluetoothConnection = new BluetoothConnection(BluetoothAdapter.getDefaultAdapter());
         } catch (BluetoothDeviceNotSupported e) {
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
             alert.setTitle("Bluetooth");
@@ -43,6 +43,7 @@ public class MainActivity extends Activity {
             alert.setPositiveButton("OK", null);
             alert.show();
         }
+        ZoneHandler.setBluetoothConnection(bluetoothConnection);
 
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.file_key), Context.MODE_PRIVATE);
 
