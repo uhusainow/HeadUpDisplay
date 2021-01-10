@@ -22,10 +22,9 @@ public class BluetoothConnection implements Serializable {
 
     public BluetoothConnection(BluetoothAdapter bluetoothAdapter) throws BluetoothDeviceNotSupported, BluetoothNotEnabled, IOException {
         this.bluetoothAdapter = bluetoothAdapter;
-        this.init();
     }
 
-    private void init() throws BluetoothDeviceNotSupported, BluetoothNotEnabled, IOException {
+    public void init() throws BluetoothDeviceNotSupported, BluetoothNotEnabled, IOException {
 
         this.bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
