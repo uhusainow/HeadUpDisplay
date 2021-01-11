@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class BluetoothConnection implements Serializable {
 
-    public static final ArrayList<String> BLUETOOTH_DEVICES = new ArrayList<>(Arrays.asList("CBT", "KONNWEI", "CAN OBDII", "OBDII", "Airpods von Predator680"));
+    public static final ArrayList<String> BLUETOOTH_DEVICES = new ArrayList<>(Arrays.asList("CBT", "KONNWEI", "CAN OBDII", "OBDII", "AirPods von Predator680"));
 
     private BluetoothAdapter bluetoothAdapter;
     private BluetoothSocket bluetoothSocket;

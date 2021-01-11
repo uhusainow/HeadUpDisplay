@@ -47,9 +47,9 @@ public class MainActivity extends Activity {
 
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.file_key), Context.MODE_PRIVATE);
 
-        SharedPreferences.Editor editor = sharedPref.edit();
+        /*SharedPreferences.Editor editor = sharedPref.edit();
         editor.clear();
-        editor.apply();
+        editor.apply();*/
 
         int zoneOne = sharedPref.getInt("1", 0);
         int zoneTwo = sharedPref.getInt("2", 0);

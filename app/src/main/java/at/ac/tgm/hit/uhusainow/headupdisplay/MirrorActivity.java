@@ -30,17 +30,17 @@ public class MirrorActivity extends Activity {
         TextView zoneThreeContent = findViewById(69422);
 
         if (zoneOneContent != null) {
-            zoneOneContent.setScaleX(-1);
+            //zoneOneContent.setScaleX(1);
             zoneOneContent.setScaleY(-1);
         }
 
         if (zoneTwoContent != null) {
-            zoneTwoContent.setScaleX(-1);
+            //zoneTwoContent.setScaleX(1);
             zoneTwoContent.setScaleY(-1);
         }
 
         if (zoneThreeContent != null) {
-            zoneThreeContent.setScaleX(-1);
+            //zoneThreeContent.setScaleX(1);
             zoneThreeContent.setScaleY(-1);
         }
 

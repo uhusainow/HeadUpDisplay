@@ -40,19 +40,19 @@ public class ZoneHandler {
                 break;
 
             case 2:
-                //usedOption = new FuelOption(activity, bluetoothSocket);
+                usedOption = new FuelOption(activity, bluetoothSocket);
                 break;
 
             case 3:
-                //usedOption = new RPMOption(activity, bluetoothSocket);
+                usedOption = new RPMOption(activity, bluetoothSocket);
                 break;
 
             case 4:
-                //usedOption = new ThrottlePositionOption(activity, bluetoothSocket);
+                usedOption = new ThrottlePositionOption(activity, bluetoothSocket);
                 break;
 
             case 5:
-                //usedOption = new AmbientTempOption(activity, bluetoothSocket);
+                usedOption = new AmbientTempOption(activity, bluetoothSocket);
                 break;
 
         }
