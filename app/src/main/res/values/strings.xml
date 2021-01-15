@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">HeadUpDisplay</string>
     <string name="add">+</string>
     <string-array name="options">
         <item>(Keine Auswahl)</item>
